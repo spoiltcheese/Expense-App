@@ -11,6 +11,7 @@ const Input = (props) => {
         placeholder={props.label}
         aria-label={props.label}
         aria-describedby="basic-addon1"
+        value={props.value}
       />
     </div>
   );
