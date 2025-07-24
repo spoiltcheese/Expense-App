@@ -9,10 +9,6 @@ function App() {
   const [items, setItems] = useState([]);
   const [shownItem, setShownItem] = useState();
 
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [date, setDate] = useState("");
-
   const onAddItem = (newItem) => {
     setItems([...items, newItem]);
   };
