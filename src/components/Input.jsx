@@ -12,6 +12,7 @@ const Input = (props) => {
         aria-label={props.label}
         aria-describedby="basic-addon1"
         value={props.value}
+        onChange={props.onChange}
       />
     </div>
   );
