@@ -1,10 +1,16 @@
 import React from "react";
+import Input from "./components/Input";
+import Button from "./components/Button";
+import Form from "./components/Form";
 
 function App() {
   return (
-    <div>
-      <h2>GA SEB</h2>
-    </div>
+    <Form>
+      <Input label="Name" />
+      <Input label="Price" />
+      <Input label="Date" />
+      <Button label="Submit" />
+    </Form>
   );
 }
 
