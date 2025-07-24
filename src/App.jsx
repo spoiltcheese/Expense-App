@@ -9,6 +9,10 @@ function App() {
   const [items, setItems] = useState([]);
   const [shownItem, setShownItem] = useState();
 
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [date, setDate] = useState("");
+
   const onAddItem = (newItem) => {
     setItems([...items, newItem]);
   };
@@ -21,7 +25,15 @@ function App() {
   const onShowItem = (index) => {
     const itemToShow = items.filter((items, i) => i === index);
     setShownItem(itemToShow[0]);
-    console.log("Item to show:", itemToShow[0]);
+    console.log(itemToShow[0]);
+  };
+
+  const onEditItem = (editedItem) => {
+    const updatedItems = items.map((item, index) =>
+      index === items.indexOf(shownItem) ? editedItem : item
+    );
+    setItems(updatedItems);
+    setShownItem(null);
   };
 
   return (
@@ -29,6 +41,7 @@ function App() {
       <Form
         onAddItem={onAddItem}
         onShowItem={onShowItem}
+        onEditItem={onEditItem}
         shownItem={shownItem}
       />
       <Display

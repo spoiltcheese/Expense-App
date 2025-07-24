@@ -1,27 +1,27 @@
 import React from "react";
 import Input from "./Input";
 import Button from "./Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Form = (props) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [date, setDate] = useState("");
 
+  useEffect(() => {
+    setName(props.shownItem?.name || "");
+    setPrice(props.shownItem?.price || "");
+    setDate(props.shownItem?.date || "");
+  }, [props.shownItem]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     props.onAddItem({ name, price, date });
-    setName("");
-    setPrice("");
-    setDate("");
   };
 
-  const doShowItem = (e) => {
-    setName(props.shownItem.name);
-    setPrice(props.shownItem.price);
-    setDate(props.shownItem.date);
-
-    console.log("Item to show:", props.item);
+  const handleEdit = (e) => {
+    e.preventDefault();
+    props.onEditItem({ name, price, date });
   };
 
   return (
@@ -41,7 +41,11 @@ const Form = (props) => {
         value={date}
         onChange={(e) => setDate(e.target.value)}
       />
-      <Button label="Commit Changes" className="btn-warning" />
+      <Button
+        label="Commit Changes"
+        onClick={handleEdit}
+        className="btn-warning"
+      />
       <Button label="Submit" onClick={handleSubmit} className="btn-primary" />
     </div>
   );
